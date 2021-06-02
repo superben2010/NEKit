@@ -1,5 +1,5 @@
 import Foundation
-import Sodium
+//import Sodium
 
 open class SodiumStreamCrypto: StreamCryptoProtocol {
     public enum Alogrithm {
@@ -42,7 +42,7 @@ open class SodiumStreamCrypto: StreamCryptoProtocol {
             _ = outputData.withUnsafeMutableBytes { outputPtr in
                 iv.withUnsafeBytes { ivPtr in
                     key.withUnsafeBytes { keyPtr in
-                        crypto_stream_chacha20_xor_ic(outputPtr.bindMemory(to: UInt8.self).baseAddress!, outputPtr.bindMemory(to: UInt8.self).baseAddress!, c, ivPtr.bindMemory(to: UInt8.self).baseAddress!, UInt64(counter/blockSize), keyPtr.bindMemory(to: UInt8.self).baseAddress!)
+//                        crypto_stream_chacha20_xor_ic(outputPtr.bindMemory(to: UInt8.self).baseAddress!, outputPtr.bindMemory(to: UInt8.self).baseAddress!, c, ivPtr.bindMemory(to: UInt8.self).baseAddress!, UInt64(counter/blockSize), keyPtr.bindMemory(to: UInt8.self).baseAddress!)
                     }
                 }
             }
@@ -51,8 +51,8 @@ open class SodiumStreamCrypto: StreamCryptoProtocol {
             let c = UInt64(outputData.count)
             _ = outputData.withUnsafeMutableBytes { outputPtr in
                 iv.withUnsafeBytes { ivPtr in
-                    key.withUnsafeBytes { keyPtr in
-                        crypto_stream_salsa20_xor_ic(outputPtr.bindMemory(to: UInt8.self).baseAddress!, outputPtr.bindMemory(to: UInt8.self).baseAddress!, c, ivPtr.bindMemory(to: UInt8.self).baseAddress!, UInt64(counter/blockSize), keyPtr.bindMemory(to: UInt8.self).baseAddress!)
+                   key.withUnsafeBytes {                    keyPtr in
+//                        crypto_stream_salsa20_xor_ic(outputPtr.bindMemory(to: UInt8.self).baseAddress!, outputPtr.bindMemory(to: UInt8.self).baseAddress!, c, ivPtr.bindMemory(to: UInt8.self).baseAddress!, UInt64(counter/blockSize), keyPtr.bindMemory(to: UInt8.self).baseAddress!)
                     }
                 }
             }
